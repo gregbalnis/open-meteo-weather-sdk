@@ -20,11 +20,11 @@
 
 **Purpose**: Project initialization and basic structure
 
-- [ ] T001 Initialize Go module at /workspaces/open-meteo-weather-sdk/go.mod
-- [ ] T002 [P] Create .gitignore file at /workspaces/open-meteo-weather-sdk/.gitignore with Go patterns
-- [ ] T003 [P] Create Makefile at /workspaces/open-meteo-weather-sdk/Makefile with test, lint, coverage, clean targets
-- [ ] T004 [P] Create GitHub Actions workflow at /workspaces/open-meteo-weather-sdk/.github/workflows/ci.yml using Go 1.25.5, actions/checkout@v6.0.1, actions/setup-go@v6.1.0, golangci-lint-action@v9.2.0
-- [ ] T005 [P] Create initial README.md at /workspaces/open-meteo-weather-sdk/README.md with project description and placeholder for usage
+- [X] T001 Initialize Go module at /workspaces/open-meteo-weather-sdk/go.mod
+- [X] T002 [P] Create .gitignore file at /workspaces/open-meteo-weather-sdk/.gitignore with Go patterns
+- [X] T003 [P] Create Makefile at /workspaces/open-meteo-weather-sdk/Makefile with test, lint, coverage, clean targets
+- [X] T004 [P] Create GitHub Actions workflow at /workspaces/open-meteo-weather-sdk/.github/workflows/ci.yml using Go 1.25.5, actions/checkout@v6.0.1, actions/setup-go@v6.1.0, golangci-lint-action@v9.2.0
+- [X] T005 [P] Create initial README.md at /workspaces/open-meteo-weather-sdk/README.md with project description and placeholder for usage
 
 **Checkpoint**: Project structure ready - can begin implementation work
 
@@ -36,11 +36,11 @@
 
 **⚠️ CRITICAL**: No user story work can begin until this phase is complete
 
-- [ ] T006 Define CurrentWeather struct with all 15 weather parameter fields in /workspaces/open-meteo-weather-sdk/weather.go
-- [ ] T007 [P] Define internal weatherResponse struct for API JSON unmarshaling in /workspaces/open-meteo-weather-sdk/weather.go
-- [ ] T008 [P] Define Client struct with httpClient, baseURL, semaphore fields in /workspaces/open-meteo-weather-sdk/client.go
-- [ ] T009 [P] Define ErrorType constants (Validation, Network, API) in /workspaces/open-meteo-weather-sdk/errors.go
-- [ ] T010 [P] Define Error struct with Type, Message, Cause fields in /workspaces/open-meteo-weather-sdk/errors.go
+- [X] T006 Define CurrentWeather struct with all 15 weather parameter fields in /workspaces/open-meteo-weather-sdk/weather.go
+- [X] T007 [P] Define internal weatherResponse struct for API JSON unmarshaling in /workspaces/open-meteo-weather-sdk/weather.go
+- [X] T008 [P] Define Client struct with httpClient, baseURL, semaphore fields in /workspaces/open-meteo-weather-sdk/client.go
+- [X] T009 [P] Define ErrorType constants (Validation, Network, API) in /workspaces/open-meteo-weather-sdk/errors.go
+- [X] T010 [P] Define Error struct with Type, Message, Cause fields in /workspaces/open-meteo-weather-sdk/errors.go
 
 **Checkpoint**: Foundation ready - user story implementation can now begin in parallel
 
@@ -54,24 +54,24 @@
 
 ### Implementation for User Story 1
 
-- [ ] T011 [P] [US1] Implement NewClient constructor with default configuration (10s timeout, base URL, 10-capacity semaphore) in /workspaces/open-meteo-weather-sdk/client.go
-- [ ] T012 [P] [US1] Implement GetCurrentWeather method signature with context, lat, lon parameters in /workspaces/open-meteo-weather-sdk/client.go
-- [ ] T013 [US1] Implement coordinate validation logic in GetCurrentWeather (lat: -90 to 90, lon: -180 to 180) in /workspaces/open-meteo-weather-sdk/client.go
-- [ ] T014 [US1] Implement HTTP request construction with query parameters (latitude, longitude, current_weather=true, metric units) in /workspaces/open-meteo-weather-sdk/client.go
-- [ ] T015 [US1] Implement HTTP request execution with context and timeout in /workspaces/open-meteo-weather-sdk/client.go
-- [ ] T016 [US1] Implement JSON response parsing into CurrentWeather struct in /workspaces/open-meteo-weather-sdk/client.go
-- [ ] T017 [US1] Implement semaphore-based concurrency control (max 10 requests) in GetCurrentWeather in /workspaces/open-meteo-weather-sdk/client.go
-- [ ] T018 [P] [US1] Add godoc comments to Client, NewClient, and GetCurrentWeather in /workspaces/open-meteo-weather-sdk/client.go
-- [ ] T019 [P] [US1] Add godoc comments to CurrentWeather and all fields in /workspaces/open-meteo-weather-sdk/weather.go
+- [X] T011 [P] [US1] Implement NewClient constructor with default configuration (10s timeout, base URL, 10-capacity semaphore) in /workspaces/open-meteo-weather-sdk/client.go
+- [X] T012 [P] [US1] Implement GetCurrentWeather method signature with context, lat, lon parameters in /workspaces/open-meteo-weather-sdk/client.go
+- [X] T013 [US1] Implement coordinate validation logic in GetCurrentWeather (lat: -90 to 90, lon: -180 to 180) in /workspaces/open-meteo-weather-sdk/client.go
+- [X] T014 [US1] Implement HTTP request construction with query parameters (latitude, longitude, current_weather=true, metric units) in /workspaces/open-meteo-weather-sdk/client.go
+- [X] T015 [US1] Implement HTTP request execution with context and timeout in /workspaces/open-meteo-weather-sdk/client.go
+- [X] T016 [US1] Implement JSON response parsing into CurrentWeather struct in /workspaces/open-meteo-weather-sdk/client.go
+- [X] T017 [US1] Implement semaphore-based concurrency control (max 10 requests) in GetCurrentWeather in /workspaces/open-meteo-weather-sdk/client.go
+- [X] T018 [P] [US1] Add godoc comments to Client, NewClient, and GetCurrentWeather in /workspaces/open-meteo-weather-sdk/client.go
+- [X] T019 [P] [US1] Add godoc comments to CurrentWeather and all fields in /workspaces/open-meteo-weather-sdk/weather.go
 
 ### Tests for User Story 1
 
-- [ ] T020 [P] [US1] Create weather_test.go with test for JSON unmarshaling of complete API response in /workspaces/open-meteo-weather-sdk/weather_test.go
-- [ ] T021 [P] [US1] Add test for JSON unmarshaling with null/missing weather parameters (zero values) in /workspaces/open-meteo-weather-sdk/weather_test.go
-- [ ] T022 [US1] Create client_test.go with httptest mock server for successful GetCurrentWeather call in /workspaces/open-meteo-weather-sdk/client_test.go
-- [ ] T023 [US1] Add test for GetCurrentWeather with valid boundary coordinates (lat=90, lon=180) in /workspaces/open-meteo-weather-sdk/client_test.go
-- [ ] T024 [US1] Add test for concurrent GetCurrentWeather calls (up to 10 simultaneous) in /workspaces/open-meteo-weather-sdk/client_test.go
-- [ ] T025 [US1] Add test for context cancellation during GetCurrentWeather in /workspaces/open-meteo-weather-sdk/client_test.go
+- [X] T020 [P] [US1] Create weather_test.go with test for JSON unmarshaling of complete API response in /workspaces/open-meteo-weather-sdk/weather_test.go
+- [X] T021 [P] [US1] Add test for JSON unmarshaling with null/missing weather parameters (zero values) in /workspaces/open-meteo-weather-sdk/weather_test.go
+- [X] T022 [US1] Create client_test.go with httptest mock server for successful GetCurrentWeather call in /workspaces/open-meteo-weather-sdk/client_test.go
+- [X] T023 [US1] Add test for GetCurrentWeather with valid boundary coordinates (lat=90, lon=180) in /workspaces/open-meteo-weather-sdk/client_test.go
+- [X] T024 [US1] Add test for concurrent GetCurrentWeather calls (up to 10 simultaneous) in /workspaces/open-meteo-weather-sdk/client_test.go
+- [X] T025 [US1] Add test for context cancellation during GetCurrentWeather in /workspaces/open-meteo-weather-sdk/client_test.go
 
 **Checkpoint**: User Story 1 complete - SDK can fetch weather data successfully
 
@@ -85,27 +85,27 @@
 
 ### Implementation for User Story 2
 
-- [ ] T026 [P] [US2] Implement Error.Error() method returning formatted message in /workspaces/open-meteo-weather-sdk/errors.go
-- [ ] T027 [P] [US2] Implement Error.Unwrap() method for error chain inspection in /workspaces/open-meteo-weather-sdk/errors.go
-- [ ] T028 [P] [US2] Add godoc comments to ErrorType, Error, and methods in /workspaces/open-meteo-weather-sdk/errors.go
-- [ ] T029 [US2] Update GetCurrentWeather to return ErrorTypeValidation for invalid coordinates in /workspaces/open-meteo-weather-sdk/client.go
-- [ ] T030 [US2] Update GetCurrentWeather to return ErrorTypeValidation for concurrent request limit exceeded in /workspaces/open-meteo-weather-sdk/client.go
-- [ ] T031 [US2] Update GetCurrentWeather to return ErrorTypeNetwork for network/HTTP failures in /workspaces/open-meteo-weather-sdk/client.go
-- [ ] T032 [US2] Update GetCurrentWeather to return ErrorTypeAPI for non-200 HTTP status codes in /workspaces/open-meteo-weather-sdk/client.go
-- [ ] T033 [US2] Update GetCurrentWeather to return ErrorTypeAPI for JSON parsing failures in /workspaces/open-meteo-weather-sdk/client.go
+- [X] T026 [P] [US2] Implement Error.Error() method returning formatted message in /workspaces/open-meteo-weather-sdk/errors.go
+- [X] T027 [P] [US2] Implement Error.Unwrap() method for error chain inspection in /workspaces/open-meteo-weather-sdk/errors.go
+- [X] T028 [P] [US2] Add godoc comments to ErrorType, Error, and methods in /workspaces/open-meteo-weather-sdk/errors.go
+- [X] T029 [US2] Update GetCurrentWeather to return ErrorTypeValidation for invalid coordinates in /workspaces/open-meteo-weather-sdk/client.go
+- [X] T030 [US2] Update GetCurrentWeather to return ErrorTypeValidation for concurrent request limit exceeded in /workspaces/open-meteo-weather-sdk/client.go
+- [X] T031 [US2] Update GetCurrentWeather to return ErrorTypeNetwork for network/HTTP failures in /workspaces/open-meteo-weather-sdk/client.go
+- [X] T032 [US2] Update GetCurrentWeather to return ErrorTypeAPI for non-200 HTTP status codes in /workspaces/open-meteo-weather-sdk/client.go
+- [X] T033 [US2] Update GetCurrentWeather to return ErrorTypeAPI for JSON parsing failures in /workspaces/open-meteo-weather-sdk/client.go
 
 ### Tests for User Story 2
 
-- [ ] T034 [P] [US2] Create errors_test.go with test for Error.Error() formatting in /workspaces/open-meteo-weather-sdk/errors_test.go
-- [ ] T035 [P] [US2] Add test for Error.Unwrap() with wrapped errors in /workspaces/open-meteo-weather-sdk/errors_test.go
-- [ ] T036 [P] [US2] Add test for errors.Is and errors.As compatibility in /workspaces/open-meteo-weather-sdk/errors_test.go
-- [ ] T037 [P] [US2] Add test in client_test.go for ErrorTypeValidation with invalid latitude (999.0) in /workspaces/open-meteo-weather-sdk/client_test.go
-- [ ] T038 [P] [US2] Add test in client_test.go for ErrorTypeValidation with invalid longitude (-999.0) in /workspaces/open-meteo-weather-sdk/client_test.go
-- [ ] T039 [P] [US2] Add test in client_test.go for ErrorTypeValidation with concurrent limit exceeded in /workspaces/open-meteo-weather-sdk/client_test.go
-- [ ] T040 [P] [US2] Add test in client_test.go for ErrorTypeNetwork with httptest server timeout in /workspaces/open-meteo-weather-sdk/client_test.go
-- [ ] T041 [P] [US2] Add test in client_test.go for ErrorTypeAPI with HTTP 400 response in /workspaces/open-meteo-weather-sdk/client_test.go
-- [ ] T042 [P] [US2] Add test in client_test.go for ErrorTypeAPI with HTTP 500 response in /workspaces/open-meteo-weather-sdk/client_test.go
-- [ ] T043 [P] [US2] Add test in client_test.go for ErrorTypeAPI with malformed JSON response in /workspaces/open-meteo-weather-sdk/client_test.go
+- [X] T034 [P] [US2] Create errors_test.go with test for Error.Error() formatting in /workspaces/open-meteo-weather-sdk/errors_test.go
+- [X] T035 [P] [US2] Add test for Error.Unwrap() with wrapped errors in /workspaces/open-meteo-weather-sdk/errors_test.go
+- [X] T036 [P] [US2] Add test for errors.Is and errors.As compatibility in /workspaces/open-meteo-weather-sdk/errors_test.go
+- [X] T037 [P] [US2] Add test in client_test.go for ErrorTypeValidation with invalid latitude (999.0) in /workspaces/open-meteo-weather-sdk/client_test.go
+- [X] T038 [P] [US2] Add test in client_test.go for ErrorTypeValidation with invalid longitude (-999.0) in /workspaces/open-meteo-weather-sdk/client_test.go
+- [X] T039 [P] [US2] Add test in client_test.go for ErrorTypeValidation with concurrent limit exceeded in /workspaces/open-meteo-weather-sdk/client_test.go
+- [X] T040 [P] [US2] Add test in client_test.go for ErrorTypeNetwork with httptest server timeout in /workspaces/open-meteo-weather-sdk/client_test.go
+- [X] T041 [P] [US2] Add test in client_test.go for ErrorTypeAPI with HTTP 400 response in /workspaces/open-meteo-weather-sdk/client_test.go
+- [X] T042 [P] [US2] Add test in client_test.go for ErrorTypeAPI with HTTP 500 response in /workspaces/open-meteo-weather-sdk/client_test.go
+- [X] T043 [P] [US2] Add test in client_test.go for ErrorTypeAPI with malformed JSON response in /workspaces/open-meteo-weather-sdk/client_test.go
 
 **Checkpoint**: User Story 2 complete - SDK provides typed, actionable errors
 
@@ -119,23 +119,23 @@
 
 ### Implementation for User Story 3
 
-- [ ] T044 [P] [US3] Define Option function type in /workspaces/open-meteo-weather-sdk/options.go
-- [ ] T045 [P] [US3] Implement WithTimeout option in /workspaces/open-meteo-weather-sdk/options.go
-- [ ] T046 [P] [US3] Implement WithHTTPClient option in /workspaces/open-meteo-weather-sdk/options.go
-- [ ] T047 [P] [US3] Implement WithBaseURL option in /workspaces/open-meteo-weather-sdk/options.go
-- [ ] T048 [P] [US3] Add godoc comments to Option type and all option functions in /workspaces/open-meteo-weather-sdk/options.go
-- [ ] T049 [US3] Update NewClient to accept variadic Option parameters and apply them in /workspaces/open-meteo-weather-sdk/client.go
-- [ ] T050 [US3] Update Client initialization to support option-based configuration in /workspaces/open-meteo-weather-sdk/client.go
+- [X] T044 [P] [US3] Define Option function type in /workspaces/open-meteo-weather-sdk/options.go
+- [X] T045 [P] [US3] Implement WithTimeout option in /workspaces/open-meteo-weather-sdk/options.go
+- [X] T046 [P] [US3] Implement WithHTTPClient option in /workspaces/open-meteo-weather-sdk/options.go
+- [X] T047 [P] [US3] Implement WithBaseURL option in /workspaces/open-meteo-weather-sdk/options.go
+- [X] T048 [P] [US3] Add godoc comments to Option type and all option functions in /workspaces/open-meteo-weather-sdk/options.go
+- [X] T049 [US3] Update NewClient to accept variadic Option parameters and apply them in /workspaces/open-meteo-weather-sdk/client.go
+- [X] T050 [US3] Update Client initialization to support option-based configuration in /workspaces/open-meteo-weather-sdk/client.go
 
 ### Tests for User Story 3
 
-- [ ] T051 [P] [US3] Create options_test.go with test for WithTimeout option in /workspaces/open-meteo-weather-sdk/options_test.go
-- [ ] T052 [P] [US3] Add test in options_test.go for WithHTTPClient option in /workspaces/open-meteo-weather-sdk/options_test.go
-- [ ] T053 [P] [US3] Add test in options_test.go for WithBaseURL option in /workspaces/open-meteo-weather-sdk/options_test.go
-- [ ] T054 [P] [US3] Add test in options_test.go for multiple options combined in /workspaces/open-meteo-weather-sdk/options_test.go
-- [ ] T055 [P] [US3] Add test in client_test.go for custom timeout enforcement (request exceeds timeout) in /workspaces/open-meteo-weather-sdk/client_test.go
-- [ ] T056 [P] [US3] Add test in client_test.go for custom HTTP client with transport in /workspaces/open-meteo-weather-sdk/client_test.go
-- [ ] T057 [P] [US3] Add test in client_test.go for custom base URL in /workspaces/open-meteo-weather-sdk/client_test.go
+- [X] T051 [P] [US3] Create options_test.go with test for WithTimeout option in /workspaces/open-meteo-weather-sdk/options_test.go
+- [X] T052 [P] [US3] Add test in options_test.go for WithHTTPClient option in /workspaces/open-meteo-weather-sdk/options_test.go
+- [X] T053 [P] [US3] Add test in options_test.go for WithBaseURL option in /workspaces/open-meteo-weather-sdk/options_test.go
+- [X] T054 [P] [US3] Add test in options_test.go for multiple options combined in /workspaces/open-meteo-weather-sdk/options_test.go
+- [X] T055 [P] [US3] Add test in client_test.go for custom timeout enforcement (request exceeds timeout) in /workspaces/open-meteo-weather-sdk/client_test.go
+- [X] T056 [P] [US3] Add test in client_test.go for custom HTTP client with transport in /workspaces/open-meteo-weather-sdk/client_test.go
+- [X] T057 [P] [US3] Add test in client_test.go for custom base URL in /workspaces/open-meteo-weather-sdk/client_test.go
 
 **Checkpoint**: All user stories complete - SDK is fully configurable
 
@@ -145,13 +145,13 @@
 
 **Purpose**: Documentation, examples, and final validation
 
-- [ ] T058 [P] Create examples/basic/main.go with basic usage example
-- [ ] T059 Update README.md with installation instructions, usage examples, and API reference in /workspaces/open-meteo-weather-sdk/README.md
-- [ ] T060 [P] Verify all exported symbols have godoc comments across all files
-- [ ] T061 Run make lint and fix any linting issues
-- [ ] T062 Run make coverage and verify 80% minimum coverage
-- [ ] T063 Validate quickstart.md examples can be executed successfully
-- [ ] T064 Create LICENSE file at /workspaces/open-meteo-weather-sdk/LICENSE
+- [X] T058 [P] Create examples/basic/main.go with basic usage example
+- [X] T059 Update README.md with installation instructions, usage examples, and API reference in /workspaces/open-meteo-weather-sdk/README.md
+- [X] T060 [P] Verify all exported symbols have godoc comments across all files
+- [X] T061 Run make lint and fix any linting issues
+- [X] T062 Run make coverage and verify 80% minimum coverage
+- [X] T063 Validate quickstart.md examples can be executed successfully
+- [X] T064 Create LICENSE file at /workspaces/open-meteo-weather-sdk/LICENSE
 
 **Checkpoint**: SDK ready for v0.1.0 release
 
