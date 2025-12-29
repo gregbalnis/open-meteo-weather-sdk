@@ -11,7 +11,7 @@ Build a Go SDK that wraps the Open Meteo Current Weather API, providing a simple
 
 ## Technical Context
 
-**Language/Version**: Go 1.21+ (Latest Stable)  
+**Language/Version**: Go 1.25.5 (Latest Stable)  
 **Primary Dependencies**: None (stdlib only: `net/http`, `encoding/json`, `testing`, `httptest`)  
 **Storage**: N/A (stateless HTTP client)  
 **Testing**: Go stdlib `testing` package with `httptest` for mocking  
@@ -87,7 +87,7 @@ Build a Go SDK that wraps the Open Meteo Current Weather API, providing a simple
 **Status**: PASS
 
 - GitHub Actions CI workflow configured
-  - Lint: golangci-lint-action (latest)
+  - Lint: golangci-lint-action v9.2.0
   - Test: go test with race detector
   - Coverage: 80% enforcement
 - Makefile for local development (test, lint, coverage, clean)

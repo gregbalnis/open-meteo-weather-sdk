@@ -387,6 +387,23 @@ All required functionality (HTTP, JSON, testing) is available in stdlib.
 | Missing weather parameters | High | Low | Use zero values and document per clarifications |
 | Coordinate validation edge cases | Low | Low | Comprehensive unit tests for boundaries |
 
+### 4. Toolchain Versioning
+
+**Question**: What are the latest stable versions of the Go language and GitHub Actions components as of December 2025?
+
+**Research**: Performed web search for latest releases of Go, actions/checkout, actions/setup-go, and golangci-lint-action.
+
+**Decision**:
+- **Go Language**: 1.25.5 (Latest Stable)
+- **actions/checkout**: v6.0.1
+- **actions/setup-go**: v6.1.0
+- **golangci-lint-action**: v9.2.0
+
+**Rationale**: Using the latest stable versions ensures access to the newest language features, performance improvements, and security patches. It also ensures compatibility with modern CI environments.
+
+**Alternatives Considered**:
+- Using older LTS versions -> Rejected to maximize longevity of the codebase without immediate upgrade needs.
+
 ## Next Steps (Phase 1)
 
 With research complete, proceed to:
