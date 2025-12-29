@@ -12,7 +12,7 @@
 - Q: When the Open Meteo API returns a response with some weather parameters missing (e.g., snowfall is null in summer), how should the SDK represent these values? → A: Handle gracefully with nil/zero values and document clearly
 - Q: Should the SDK automatically retry failed requests (network timeouts, temporary API errors)? → A: No automatic retries; let application handle retry logic
 - Q: Which weather parameters should support unit conversion (P3 configuration story)? → A: None initially; use metric always
-- Q: When a developer makes concurrent requests exceeding a safe threshold (e.g., 100+ simultaneous requests), how should the SDK behave? → A: Fail immediately with clear error
+- Q: When a developer makes concurrent requests exceeding a safe threshold (e.g., 10+ simultaneous requests), how should the SDK behave? → A: Fail immediately with clear error
 - Q: When coordinates fall exactly at boundary extremes (e.g., lat=90.0 North Pole, lon=180.0 Date Line), should these be accepted? → A: Accept as valid; Open Meteo handles edge cases
 
 ## User Scenarios & Testing *(mandatory)*
@@ -70,7 +70,7 @@ A Go developer wants to customize SDK behavior such as HTTP timeouts or custom H
 
 - Coordinates at extreme boundaries (North/South pole, International Date Line) are accepted as valid. The Open Meteo API will handle these edge cases, and the SDK passes them through without additional validation beyond standard range checks.
 - When the API returns partial responses with some weather parameters missing (null values), the SDK will use zero values for numeric fields and document which fields may be absent based on location/season.
-- When concurrent requests exceed a safe threshold (100 simultaneous requests per SDK instance), the SDK will fail immediately with a clear error message rather than queueing or silently degrading.
+- When concurrent requests exceed a safe threshold (10 simultaneous requests per SDK instance), the SDK will fail immediately with a clear error message rather than queueing or silently degrading.
 - How does the SDK behave when the API returns data in an unexpected format or with missing fields?
 - What happens if the API key/authentication requirement changes in the future?
 
@@ -86,7 +86,7 @@ A Go developer wants to customize SDK behavior such as HTTP timeouts or custom H
 - **FR-006**: SDK MUST parse JSON responses from the Open Meteo API into structured Go types.
 - **FR-007**: SDK MUST return distinct error types for validation errors, network errors, and API errors. The SDK will not automatically retry failed requests; applications are responsible for implementing their own retry logic.
 - **FR-008**: SDK MUST implement appropriate timeouts for HTTP requests (default: 10 seconds based on industry standards for weather APIs).
-- **FR-009**: SDK MUST be thread-safe for concurrent use by multiple goroutines. The SDK will enforce a maximum of 100 concurrent requests per instance and return an error if this limit is exceeded.
+- **FR-009**: SDK MUST be thread-safe for concurrent use by multiple goroutines. The SDK will enforce a maximum of 10 concurrent requests per instance and return an error if this limit is exceeded.
 - **FR-010**: SDK MUST follow Effective Go conventions for naming, error handling, and documentation.
 - **FR-011**: SDK MUST provide public API documentation with examples for all exported functions and types.
 - **FR-012**: SDK MUST not require users to understand Open Meteo API specifics (endpoints, query parameters, response structure).
@@ -102,7 +102,7 @@ A Go developer wants to customize SDK behavior such as HTTP timeouts or custom H
 ### Measurable Outcomes
 
 - **SC-001**: Developers can fetch current weather data with a single method call requiring only latitude and longitude inputs.
-- **SC-002**: SDK handles at least 100 concurrent weather requests without errors or data corruption.
+- **SC-002**: SDK handles at least 10 concurrent weather requests without errors or data corruption.
 - **SC-003**: Weather data retrieval completes within 3 seconds for 95% of requests under normal network conditions.
 - **SC-004**: SDK provides test coverage of at least 80% as required by the project constitution.
 - **SC-005**: All public APIs are documented with godoc-compliant comments and usage examples.
