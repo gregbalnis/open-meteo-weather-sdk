@@ -14,7 +14,7 @@ This document defines the public API contract for the Open Meteo Current Weather
 package openmeteo
 ```
 
-**Import Path**: `github.com/yourusername/open-meteo-weather-sdk`
+**Import Path**: `github.com/gregbalnis/open-meteo-weather-sdk`
 
 ## Public API
 
@@ -387,7 +387,7 @@ import (
     "fmt"
     "log"
     
-    "github.com/yourusername/open-meteo-weather-sdk"
+    "github.com/gregbalnis/open-meteo-weather-sdk"
 )
 
 func main() {

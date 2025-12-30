@@ -234,8 +234,8 @@ func (c *Client) convertToCurrentWeather(apiResp weatherResponse) *CurrentWeathe
 	if apiResp.CurrentWeather.CloudCover != nil {
 		cw.CloudCover = *apiResp.CurrentWeather.CloudCover
 	}
-	if apiResp.CurrentWeather.PressureMsl != nil {
-		cw.SeaLevelPressure = *apiResp.CurrentWeather.PressureMsl
+	if apiResp.CurrentWeather.PressureMSL != nil {
+		cw.PressureMSL = *apiResp.CurrentWeather.PressureMSL
 	}
 	if apiResp.CurrentWeather.SurfacePressure != nil {
 		cw.SurfacePressure = *apiResp.CurrentWeather.SurfacePressure

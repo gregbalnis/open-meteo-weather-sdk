@@ -68,6 +68,10 @@ func TestGetCurrentWeather_Success(t *testing.T) {
 	if weather.Longitude != 13.41 {
 		t.Errorf("Expected longitude 13.41, got %.2f", weather.Longitude)
 	}
+	expectedTime, _ := time.Parse("2006-01-02T15:04", "2025-12-29T10:00")
+	if !weather.Time.Equal(expectedTime) {
+		t.Errorf("Expected time 2025-12-29T10:00, got %s", weather.Time.Format("2006-01-02T15:04"))
+	}
 	if weather.Temperature != 15.3 {
 		t.Errorf("Expected temperature 15.3, got %.1f", weather.Temperature)
 	}
@@ -82,6 +86,36 @@ func TestGetCurrentWeather_Success(t *testing.T) {
 	}
 	if !weather.IsDay {
 		t.Error("Expected IsDay to be true")
+	}
+	if weather.RelativeHumidity != 65.0 {
+		t.Errorf("Expected relative humidity 65.0, got %.1f", weather.RelativeHumidity)
+	}
+	if weather.ApparentTemperature != 14.1 {
+		t.Errorf("Expected apparent temperature 14.1, got %.1f", weather.ApparentTemperature)
+	}
+	if weather.Precipitation != 0.5 {
+		t.Errorf("Expected precipitation 0.5, got %.1f", weather.Precipitation)
+	}
+	if weather.Rain != 0.3 {
+		t.Errorf("Expected rain 0.3, got %.1f", weather.Rain)
+	}
+	if weather.Showers != 0.2 {
+		t.Errorf("Expected showers 0.2, got %.1f", weather.Showers)
+	}
+	if weather.Snowfall != 0.0 {
+		t.Errorf("Expected snowfall 0.0, got %.1f", weather.Snowfall)
+	}
+	if weather.CloudCover != 75.0 {
+		t.Errorf("Expected cloud cover 75.0, got %.1f", weather.CloudCover)
+	}
+	if weather.PressureMSL != 1013.25 {
+		t.Errorf("Expected pressure MSL 1013.25, got %.2f", weather.PressureMSL)
+	}
+	if weather.SurfacePressure != 1010.0 {
+		t.Errorf("Expected surface pressure 1010.0, got %.1f", weather.SurfacePressure)
+	}
+	if weather.WindGusts != 18.0 {
+		t.Errorf("Expected wind gusts 18.0, got %.1f", weather.WindGusts)
 	}
 }
 

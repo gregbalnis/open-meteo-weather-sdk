@@ -82,8 +82,8 @@ func TestCurrentWeather_JSONUnmarshaling(t *testing.T) {
 	if cw.CloudCover == nil || *cw.CloudCover != 75.0 {
 		t.Errorf("Expected cloud cover 75.0, got %v", cw.CloudCover)
 	}
-	if cw.PressureMsl == nil || *cw.PressureMsl != 1013.25 {
-		t.Errorf("Expected sea level pressure 1013.25, got %v", cw.PressureMsl)
+	if cw.PressureMSL == nil || *cw.PressureMSL != 1013.25 {
+		t.Errorf("Expected sea level pressure 1013.25, got %v", cw.PressureMSL)
 	}
 	if cw.SurfacePressure == nil || *cw.SurfacePressure != 1010.0 {
 		t.Errorf("Expected surface pressure 1010.0, got %v", cw.SurfacePressure)

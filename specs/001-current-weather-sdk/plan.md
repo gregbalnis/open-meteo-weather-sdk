@@ -155,7 +155,7 @@ Selected **flat package structure** at repository root following Go conventions 
 
 1. **Simplicity**: Single package SDK doesn't need nested directories
 2. **Go Idioms**: Matches standard library pattern (e.g., `net/http`, `encoding/json`)
-3. **Import Path**: `import "github.com/yourusername/open-meteo-weather-sdk"` is clean
+3. **Import Path**: `import "github.com/gregbalnis/open-meteo-weather-sdk"` is clean
 4. **Discoverability**: All source files visible at root level
 5. **Test Colocation**: `*_test.go` files alongside source per constitution
 

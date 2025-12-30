@@ -14,7 +14,7 @@ A Go SDK for fetching current weather data from the [Open Meteo API](https://ope
 ## Installation
 
 ```bash
-go get github.com/yourusername/open-meteo-weather-sdk
+go get github.com/gregbalnis/open-meteo-weather-sdk
 ```
 
 **Requirements**: Go 1.21 or later
@@ -29,7 +29,7 @@ import (
     "fmt"
     "log"
     
-    weather "github.com/yourusername/open-meteo-weather-sdk"
+    weather "github.com/gregbalnis/open-meteo-weather-sdk"
 )
 
 func main() {

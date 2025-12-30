@@ -45,8 +45,8 @@ type CurrentWeather struct {
 	// CloudCover is the total cloud cover in percent (0-100)
 	CloudCover float64
 
-	// SeaLevelPressure is the atmospheric pressure reduced to sea level in hectopascals
-	SeaLevelPressure float64
+	// PressureMSL is the atmospheric pressure reduced to sea level in hectopascals
+	PressureMSL float64
 
 	// SurfacePressure is the atmospheric pressure at surface level in hectopascals
 	SurfacePressure float64
@@ -85,7 +85,7 @@ type currentWeatherResponse struct {
 	Showers             *float64 `json:"showers"`
 	Snowfall            *float64 `json:"snowfall"`
 	CloudCover          *float64 `json:"cloud_cover"`
-	PressureMsl         *float64 `json:"pressure_msl"`
+	PressureMSL         *float64 `json:"pressure_msl"`
 	SurfacePressure     *float64 `json:"surface_pressure"`
 	WindGusts           *float64 `json:"wind_gusts_10m"`
 }

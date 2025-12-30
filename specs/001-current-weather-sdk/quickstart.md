@@ -5,7 +5,7 @@
 ## Installation
 
 ```bash
-go get github.com/yourusername/open-meteo-weather-sdk
+go get github.com/gregbalnis/open-meteo-weather-sdk
 ```
 
 **Requirements**: Go 1.21 or later
@@ -22,7 +22,7 @@ import (
     "fmt"
     "log"
     
-    "github.com/yourusername/open-meteo-weather-sdk"
+    "github.com/gregbalnis/open-meteo-weather-sdk"
 )
 
 func main() {
@@ -526,6 +526,6 @@ func compareLocations(client *openmeteo.Client, locations map[string][2]float64)
 
 ## Support
 
-- **Issues**: https://github.com/yourusername/open-meteo-weather-sdk/issues
+- **Issues**: https://github.com/gregbalnis/open-meteo-weather-sdk/issues
 - **Open Meteo API**: https://open-meteo.com/en/docs
-- **Go Documentation**: https://pkg.go.dev/github.com/yourusername/open-meteo-weather-sdk
+- **Go Documentation**: https://pkg.go.dev/github.com/gregbalnis/open-meteo-weather-sdk
