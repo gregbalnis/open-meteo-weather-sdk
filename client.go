@@ -182,10 +182,7 @@ func (c *Client) buildRequestURL(latitude, longitude float64) (string, error) {
 	q := u.Query()
 	q.Set("latitude", strconv.FormatFloat(latitude, 'f', -1, 64))
 	q.Set("longitude", strconv.FormatFloat(longitude, 'f', -1, 64))
-	q.Set("current_weather", "true")
-	q.Set("temperature_unit", "celsius")
-	q.Set("windspeed_unit", "ms")
-	q.Set("precipitation_unit", "mm")
+	q.Set("current", "temperature_2m,relative_humidity_2m,apparent_temperature,is_day,precipitation,rain,showers,snowfall,weather_code,cloud_cover,pressure_msl,surface_pressure,wind_speed_10m,wind_direction_10m,wind_gusts_10m")
 	u.RawQuery = q.Encode()
 
 	return u.String(), nil

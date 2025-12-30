@@ -21,28 +21,28 @@ func TestGetCurrentWeather_Success(t *testing.T) {
 		if r.URL.Query().Get("longitude") != "13.41" {
 			t.Errorf("Expected longitude 13.41, got %s", r.URL.Query().Get("longitude"))
 		}
-		if r.URL.Query().Get("current_weather") != "true" {
-			t.Error("Expected current_weather=true")
+		if r.URL.Query().Get("current") != "temperature_2m,relative_humidity_2m,apparent_temperature,is_day,precipitation,rain,showers,snowfall,weather_code,cloud_cover,pressure_msl,surface_pressure,wind_speed_10m,wind_direction_10m,wind_gusts_10m" {
+			t.Error("Expected current=temperature_2m,relative_humidity_2m,apparent_temperature,is_day,precipitation,rain,showers,snowfall,weather_code,cloud_cover,pressure_msl,surface_pressure,wind_speed_10m,wind_direction_10m,wind_gusts_10m")
 		}
 
 		w.Header().Set("Content-Type", "application/json")
 		_, _ = fmt.Fprintln(w, `{
 			"latitude": 52.52,
 			"longitude": 13.41,
-			"current_weather": {
+			"current": {
 				"time": "2025-12-29T10:00",
-				"temperature": 15.3,
-				"windspeed": 12.5,
-				"winddirection": 270.0,
-				"weathercode": 3,
+				"temperature_2m": 15.3,
+				"wind_speed_10m": 12.5,
+				"wind_direction_10m": 270.0,
+				"weather_code": 3,
 				"is_day": 1,
-				"relativehumidity_2m": 65.0,
+				"relative_humidity_2m": 65.0,
 				"apparent_temperature": 14.1,
 				"precipitation": 0.5,
 				"rain": 0.3,
 				"showers": 0.2,
 				"snowfall": 0.0,
-				"cloudcover": 75.0,
+				"cloud_cover": 75.0,
 				"pressure_msl": 1013.25,
 				"surface_pressure": 1010.0,
 				"wind_gusts_10m": 18.0

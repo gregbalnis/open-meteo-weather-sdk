@@ -66,25 +66,25 @@ type CurrentWeather struct {
 type weatherResponse struct {
 	Latitude       float64                `json:"latitude"`
 	Longitude      float64                `json:"longitude"`
-	CurrentWeather currentWeatherResponse `json:"current_weather"`
+	CurrentWeather currentWeatherResponse `json:"current"`
 }
 
 // currentWeatherResponse is an internal structure for unmarshaling the current_weather object
 // from the Open Meteo API JSON response. Pointer types allow detection of null/missing values.
 type currentWeatherResponse struct {
 	Time                *string  `json:"time"`
-	Temperature         *float64 `json:"temperature"`
-	Windspeed           *float64 `json:"windspeed"`
-	Winddirection       *float64 `json:"winddirection"`
-	Weathercode         *int     `json:"weathercode"`
+	Temperature         *float64 `json:"temperature_2m"`
+	Windspeed           *float64 `json:"wind_speed_10m"`
+	Winddirection       *float64 `json:"wind_direction_10m"`
+	Weathercode         *int     `json:"weather_code"`
 	IsDay               *int     `json:"is_day"`
-	RelativeHumidity    *float64 `json:"relativehumidity_2m"`
+	RelativeHumidity    *float64 `json:"relative_humidity_2m"`
 	ApparentTemperature *float64 `json:"apparent_temperature"`
 	Precipitation       *float64 `json:"precipitation"`
 	Rain                *float64 `json:"rain"`
 	Showers             *float64 `json:"showers"`
 	Snowfall            *float64 `json:"snowfall"`
-	CloudCover          *float64 `json:"cloudcover"`
+	CloudCover          *float64 `json:"cloud_cover"`
 	PressureMsl         *float64 `json:"pressure_msl"`
 	SurfacePressure     *float64 `json:"surface_pressure"`
 	WindGusts           *float64 `json:"wind_gusts_10m"`
