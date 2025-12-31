@@ -42,8 +42,10 @@ func main() {
         log.Fatal(err)
     }
     
+    // Either retrieve raw data fields...
     fmt.Printf("Temperature: %.1f°C\n", w.Temperature)
-    fmt.Printf("Wind Speed: %.1f m/s\n", w.WindSpeed)
+    // ...or you may use `QuantityOf...` methods for a value with a unit associated with it (if values have units)
+    fmt.Printf("Wind Speed: %s\n", w.QuantityOfWindSpeed())
 }
 ```
 

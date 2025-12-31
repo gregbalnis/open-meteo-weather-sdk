@@ -1,6 +1,9 @@
 package openmeteo
 
-import "time"
+import (
+	"fmt"
+	"time"
+)
 
 // CurrentWeather represents a complete snapshot of current weather conditions at a specific location.
 // All weather parameter fields use metric units (°C, m/s, mm, hPa, %).
@@ -36,7 +39,7 @@ type CurrentWeather struct {
 	// Showers is the shower precipitation amount in millimeters
 	Showers float64
 
-	// Snowfall is the snowfall amount in millimeters (water equivalent)
+	// Snowfall is the snowfall amount in centimeters
 	Snowfall float64
 
 	// WeatherCode is the WMO weather code (0-99) indicating general weather conditions
@@ -51,13 +54,13 @@ type CurrentWeather struct {
 	// SurfacePressure is the atmospheric pressure at surface level in hectopascals
 	SurfacePressure float64
 
-	// WindSpeed is the wind speed at 10 meters height in meters per second
+	// WindSpeed is the wind speed at 10 meters height in kilometers per hour
 	WindSpeed float64
 
 	// WindDirection is the wind direction at 10 meters height in degrees (0-360)
 	WindDirection float64
 
-	// WindGusts is the maximum wind gust speed at 10 meters height in meters per second
+	// WindGusts is the maximum wind gust speed at 10 meters height in kilometers per hour
 	WindGusts float64
 }
 
@@ -88,4 +91,69 @@ type currentWeatherResponse struct {
 	PressureMSL         *float64 `json:"pressure_msl"`
 	SurfacePressure     *float64 `json:"surface_pressure"`
 	WindGusts           *float64 `json:"wind_gusts_10m"`
+}
+
+// QuantityOfTemperature returns the temperature with its unit
+func (w *CurrentWeather) QuantityOfTemperature() string {
+	return fmt.Sprintf("%.1f°C", w.Temperature)
+}
+
+// QuantityOfApparentTemperature returns the apparent temperature with its unit
+func (w *CurrentWeather) QuantityOfApparentTemperature() string {
+	return fmt.Sprintf("%.1f°C", w.ApparentTemperature)
+}
+
+// QuantityOfRelativeHumidity returns the relative humidity with its unit
+func (w *CurrentWeather) QuantityOfRelativeHumidity() string {
+	return fmt.Sprintf("%.0f%%", w.RelativeHumidity)
+}
+
+// QuantityOfPrecipitation returns the precipitation with its unit
+func (w *CurrentWeather) QuantityOfPrecipitation() string {
+	return fmt.Sprintf("%.1f mm", w.Precipitation)
+}
+
+// QuantityOfRain returns the rain amount with its unit
+func (w *CurrentWeather) QuantityOfRain() string {
+	return fmt.Sprintf("%.1f mm", w.Rain)
+}
+
+// QuantityOfShowers returns the shower amount with its unit
+func (w *CurrentWeather) QuantityOfShowers() string {
+	return fmt.Sprintf("%.1f mm", w.Showers)
+}
+
+// QuantityOfSnowfall returns the snowfall amount with its unit
+func (w *CurrentWeather) QuantityOfSnowfall() string {
+	return fmt.Sprintf("%.1f cm", w.Snowfall)
+}
+
+// QuantityOfCloudCover returns the cloud cover with its unit
+func (w *CurrentWeather) QuantityOfCloudCover() string {
+	return fmt.Sprintf("%.0f%%", w.CloudCover)
+}
+
+// QuantityOfPressureMSL returns the mean sea level pressure with its unit
+func (w *CurrentWeather) QuantityOfPressureMSL() string {
+	return fmt.Sprintf("%.1f hPa", w.PressureMSL)
+}
+
+// QuantityOfSurfacePressure returns the surface pressure with its unit
+func (w *CurrentWeather) QuantityOfSurfacePressure() string {
+	return fmt.Sprintf("%.1f hPa", w.SurfacePressure)
+}
+
+// QuantityOfWindSpeed returns the wind speed with its unit
+func (w *CurrentWeather) QuantityOfWindSpeed() string {
+	return fmt.Sprintf("%.1f km/h", w.WindSpeed)
+}
+
+// QuantityOfWindDirection returns the wind direction with its unit
+func (w *CurrentWeather) QuantityOfWindDirection() string {
+	return fmt.Sprintf("%.0f°", w.WindDirection)
+}
+
+// QuantityOfWindGusts returns the wind gusts with its unit
+func (w *CurrentWeather) QuantityOfWindGusts() string {
+	return fmt.Sprintf("%.1f km/h", w.WindGusts)
 }
