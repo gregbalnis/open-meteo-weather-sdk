@@ -228,3 +228,184 @@ func TestConvertToCurrentWeather_WithNulls(t *testing.T) {
 		t.Error("Expected IsDay to be false (zero value)")
 	}
 }
+
+// TestCurrentWeather_QuantityMethods tests all QuantityOf... methods
+func TestCurrentWeather_QuantityMethods(t *testing.T) {
+	weather := &CurrentWeather{
+		Temperature:         15.3,
+		ApparentTemperature: 14.1,
+		RelativeHumidity:    65.0,
+		Precipitation:       0.5,
+		Rain:                0.3,
+		Showers:             0.2,
+		Snowfall:            0.0,
+		CloudCover:          75.0,
+		PressureMSL:         1013.25,
+		SurfacePressure:     1010.0,
+		WindSpeed:           12.5,
+		WindDirection:       270.0,
+		WindGusts:           18.0,
+	}
+
+	tests := []struct {
+		name     string
+		method   func() string
+		expected string
+	}{
+		{
+			name:     "QuantityOfTemperature",
+			method:   weather.QuantityOfTemperature,
+			expected: "15.3°C",
+		},
+		{
+			name:     "QuantityOfApparentTemperature",
+			method:   weather.QuantityOfApparentTemperature,
+			expected: "14.1°C",
+		},
+		{
+			name:     "QuantityOfRelativeHumidity",
+			method:   weather.QuantityOfRelativeHumidity,
+			expected: "65%",
+		},
+		{
+			name:     "QuantityOfPrecipitation",
+			method:   weather.QuantityOfPrecipitation,
+			expected: "0.5 mm",
+		},
+		{
+			name:     "QuantityOfRain",
+			method:   weather.QuantityOfRain,
+			expected: "0.3 mm",
+		},
+		{
+			name:     "QuantityOfShowers",
+			method:   weather.QuantityOfShowers,
+			expected: "0.2 mm",
+		},
+		{
+			name:     "QuantityOfSnowfall",
+			method:   weather.QuantityOfSnowfall,
+			expected: "0.0 cm",
+		},
+		{
+			name:     "QuantityOfCloudCover",
+			method:   weather.QuantityOfCloudCover,
+			expected: "75%",
+		},
+		{
+			name:     "QuantityOfPressureMSL",
+			method:   weather.QuantityOfPressureMSL,
+			expected: "1013.2 hPa",
+		},
+		{
+			name:     "QuantityOfSurfacePressure",
+			method:   weather.QuantityOfSurfacePressure,
+			expected: "1010.0 hPa",
+		},
+		{
+			name:     "QuantityOfWindSpeed",
+			method:   weather.QuantityOfWindSpeed,
+			expected: "12.5 km/h",
+		},
+		{
+			name:     "QuantityOfWindDirection",
+			method:   weather.QuantityOfWindDirection,
+			expected: "270°",
+		},
+		{
+			name:     "QuantityOfWindGusts",
+			method:   weather.QuantityOfWindGusts,
+			expected: "18.0 km/h",
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			result := tt.method()
+			if result != tt.expected {
+				t.Errorf("%s() = %q, want %q", tt.name, result, tt.expected)
+			}
+		})
+	}
+}
+
+// TestCurrentWeather_QuantityMethods_ZeroValues tests QuantityOf... methods with zero values
+func TestCurrentWeather_QuantityMethods_ZeroValues(t *testing.T) {
+	weather := &CurrentWeather{}
+
+	tests := []struct {
+		name     string
+		method   func() string
+		expected string
+	}{
+		{
+			name:     "QuantityOfTemperature_zero",
+			method:   weather.QuantityOfTemperature,
+			expected: "0.0°C",
+		},
+		{
+			name:     "QuantityOfRelativeHumidity_zero",
+			method:   weather.QuantityOfRelativeHumidity,
+			expected: "0%",
+		},
+		{
+			name:     "QuantityOfWindSpeed_zero",
+			method:   weather.QuantityOfWindSpeed,
+			expected: "0.0 km/h",
+		},
+		{
+			name:     "QuantityOfPrecipitation_zero",
+			method:   weather.QuantityOfPrecipitation,
+			expected: "0.0 mm",
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			result := tt.method()
+			if result != tt.expected {
+				t.Errorf("%s() = %q, want %q", tt.name, result, tt.expected)
+			}
+		})
+	}
+}
+
+// TestCurrentWeather_QuantityMethods_NegativeValues tests QuantityOf... methods with negative values
+func TestCurrentWeather_QuantityMethods_NegativeValues(t *testing.T) {
+	weather := &CurrentWeather{
+		Temperature:         -10.5,
+		ApparentTemperature: -15.2,
+		WindDirection:       0.0,
+	}
+
+	tests := []struct {
+		name     string
+		method   func() string
+		expected string
+	}{
+		{
+			name:     "QuantityOfTemperature_negative",
+			method:   weather.QuantityOfTemperature,
+			expected: "-10.5°C",
+		},
+		{
+			name:     "QuantityOfApparentTemperature_negative",
+			method:   weather.QuantityOfApparentTemperature,
+			expected: "-15.2°C",
+		},
+		{
+			name:     "QuantityOfWindDirection_zero",
+			method:   weather.QuantityOfWindDirection,
+			expected: "0°",
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			result := tt.method()
+			if result != tt.expected {
+				t.Errorf("%s() = %q, want %q", tt.name, result, tt.expected)
+			}
+		})
+	}
+}
